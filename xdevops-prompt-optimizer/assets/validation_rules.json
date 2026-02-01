@@ -1,0 +1,10 @@
+{
+  "unordered_paths": [
+    "options.filters.tags",
+    "options.filters.branch",
+    "options.filters.user_id",
+    "options.filters.assigned_users",
+    "options.filters.repo_name",
+    "options.filters.file_type"
+  ]
+}

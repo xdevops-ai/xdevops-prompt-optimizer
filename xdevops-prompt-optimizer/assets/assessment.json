@@ -1,0 +1,138 @@
+[
+  {
+    "conversation": [{"role": "user", "content": "Find commits about 'devops best practices'."}],
+    "expected_json": "{\"command\":\"similarity_only\",\"options\":{\"text\":\"devops best practices\",\"internal_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Look for references to 'microservices architecture' in the code."}],
+    "expected_json": "{\"command\":\"similarity_only\",\"options\":{\"text\":\"microservices architecture\",\"internal_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Search for 'machine learning pipeline' across the repository."}],
+    "expected_json": "{\"command\":\"similarity_only\",\"options\":{\"text\":\"machine learning pipeline\",\"internal_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "I'm looking for any references to 'frontend design patterns'."}],
+    "expected_json": "{\"command\":\"similarity_only\",\"options\":{\"text\":\"frontend design patterns\",\"internal_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find code or docs about 'infrastructure as code'."}],
+    "expected_json": "{\"command\":\"similarity_only\",\"options\":{\"text\":\"infrastructure as code\",\"internal_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "List all commits by 'bob' with 'hotfix' in the commit message."}],
+    "expected_json": "{\"command\":\"metadata_only\",\"options\":{\"expression\":\"author == 'bob' AND commit_message LIKE '%hotfix%'\",\"internal_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find tasks assigned to 'charlie' where tags are 'urgent'."}],
+    "expected_json": "{\"command\":\"faceted_search\",\"options\":{\"filters\":{\"assigned_users\":[\"charlie\"],\"tags\":[\"urgent\"]},\"task_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Show session logs with role='system'."}],
+    "expected_json": "{\"command\":\"metadata_only\",\"options\":{\"expression\":\"role == 'system'\",\"session_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Get all activity for user 'david' with status='completed'."}],
+    "expected_json": "{\"command\":\"metadata_only\",\"options\":{\"expression\":\"user_id == 'david' AND status == 'completed'\",\"activity_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Look internally for 'Docker build' logs by user 'charlie'."}],
+    "expected_json": "{\"command\":\"combined_search\",\"options\":{\"text\":\"Docker build\",\"expression\":\"author == 'charlie'\",\"internal_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find tasks about 'security analysis' where user_id is 'charlie'."}],
+    "expected_json": "{\"command\":\"combined_search\",\"options\":{\"text\":\"security analysis\",\"expression\":\"user_id == 'charlie'\",\"task_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Search previous session logs about 'configuration updates' with role='user'."}],
+    "expected_json": "{\"command\":\"combined_search\",\"options\":{\"text\":\"configuration updates\",\"expression\":\"role == 'user'\",\"session_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find scenarios on 'AI automation' created by 'charlie'."}],
+    "expected_json": "{\"command\":\"combined_search\",\"options\":{\"text\":\"AI automation\",\"expression\":\"user_id == 'charlie'\",\"scenario_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Locate activity about 'project milestones' with tags == 'priority'."}],
+    "expected_json": "{\"command\":\"combined_search\",\"options\":{\"text\":\"project milestones\",\"expression\":\"tags == 'priority'\",\"activity_search\":true,\"needs_content\":true}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find commits in ['main','dev'] with commit_message containing 'fix'."}],
+    "expected_json": "{\"command\":\"faceted_search\",\"options\":{\"filters\":{\"branch\":[\"main\",\"dev\"],\"commit_message\":[\"fix\"]},\"internal_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find tasks assigned to both 'alice' and 'bob' with 'migration' in the summary."}],
+    "expected_json": "{\"command\":\"faceted_search\",\"options\":{\"filters\":{\"assigned_users\":[\"alice\",\"bob\"],\"task_summary\":[\"migration\"]},\"task_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "List all session messages tagged 'critical' with is_error=1."}],
+    "expected_json": "{\"command\":\"faceted_search\",\"options\":{\"filters\":{\"tags\":[\"critical\"],\"is_error\":[1]},\"session_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "List all 'critical' previous activities with importance_score > 0.8."}],
+    "expected_json": "{\"command\":\"faceted_search\",\"options\":{\"filters\":{\"tags\":[\"critical\"],\"importance_score\":{\"gt\":0.8}},\"activity_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find scenarios with tags 'critical' and user_id in ['charlie','david']."}],
+    "expected_json": "{\"command\":\"faceted_search\",\"options\":{\"filters\":{\"tags\":[\"critical\"],\"user_id\":[\"charlie\",\"david\"]},\"scenario_search\":true,\"needs_content\":false}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "What's the memory usage for each instance right now?"}],
+    "expected_json": "{\"command\":\"promql_construction\",\"options\":{\"query\":\"sum(container_memory_usage_bytes) by (instance)\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Check the CPU usage for each instance."}],
+    "expected_json": "{\"command\":\"promql_construction\",\"options\":{\"query\":\"sum(rate(container_cpu_usage_seconds_total[5m])) by (instance)\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Check if there is an alert firing."}],
+    "expected_json": "{\"command\":\"promql_construction\",\"options\":{\"query\":\"ALERTS{alertstate='firing'}\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Show disk read I/O by instance."}],
+    "expected_json": "{\"command\":\"promql_construction\",\"options\":{\"query\":\"sum(rate(node_disk_read_bytes_total[5m])) by (instance)\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Check the network throughput by instance."}],
+    "expected_json": "{\"command\":\"promql_construction\",\"options\":{\"query\":\"sum(rate(node_network_transmit_bytes_total[5m])) by (instance)\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "What are the latest features in Rancher 2.7?"}],
+    "expected_json": "{\"command\":\"search\",\"options\":{\"query\":\"latest features in Rancher 2.7\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "What are the latest features in OpenShift 4.17?"}],
+    "expected_json": "{\"command\":\"search\",\"options\":{\"query\":\"latest features in OpenShift 4.17\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Search for cloud storage trends in 2025."}],
+    "expected_json": "{\"command\":\"search\",\"options\":{\"query\":\"cloud storage trends 2025\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Find official docs about 'Helm 3 deployment' steps."}],
+    "expected_json": "{\"command\":\"search\",\"options\":{\"query\":\"official docs about Helm 3 deployment steps\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "What are the latest features in Kubernetes 1.27?"}],
+    "expected_json": "{\"command\":\"search\",\"options\":{\"query\":\"latest features in Kubernetes 1.27\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "What is the difference between a Deployment and a StatefulSet in Kubernetes?"}],
+    "expected_json": "{\"command\":\"ask\",\"options\":{\"query\":\"What is the difference between a Deployment and a StatefulSet in Kubernetes?\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Explain the concept of eventual consistency."}],
+    "expected_json": "{\"command\":\"ask\",\"options\":{\"query\":\"Explain the concept of eventual consistency.\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "How does database sharding improve scalability?"}],
+    "expected_json": "{\"command\":\"ask\",\"options\":{\"query\":\"How does database sharding improve scalability?\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "What is the typical overhead of using a sidecar container?"}],
+    "expected_json": "{\"command\":\"ask\",\"options\":{\"query\":\"What is the typical overhead of using a sidecar container?\"}}"
+  },
+  {
+    "conversation": [{"role": "user", "content": "Could you show me tasks assigned to user 'alice' that mention 'server migration' in the name?"}],
+    "expected_json": "{\"command\":\"metadata_only\",\"options\":{\"expression\":\"assigned_users LIKE '%alice%' AND task_name LIKE '%server migration%'\",\"task_search\":true,\"needs_content\":false}}"
+  }
+]

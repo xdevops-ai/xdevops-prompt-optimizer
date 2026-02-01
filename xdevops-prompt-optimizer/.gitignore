@@ -1,0 +1,10 @@
+.env
+.venv
+__pycache__/
+debug.log
+refined_prompts
+reports
+optimizer.log
+optimization.log
+system_prompt_optimized.json
+optimized

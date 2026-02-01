@@ -1,0 +1,55 @@
+# --- Security (CRITICAL) ---
+# Never commit environment variables containing API Keys
+.env
+.env.local
+
+# --- Python Standard ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtual Environments ---
+# Ignore the environment folder created by installation steps
+.venv/
+venv/
+ENV/
+env/
+
+# --- Logs & Debugging ---
+*.log
+logs/
+debug.log
+optimizer.log
+optimization.log
+
+# --- Project Artifacts ---
+# Ignore generated optimization results to keep the repo clean
+optimized/
+reports/
+refined_prompts/
+system_prompt_optimized.json
+
+# --- OS & IDE ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
